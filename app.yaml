@@ -1,0 +1,13 @@
+name: Style
+package-name: aldryn-style
+url: https://github.com/aldryn/aldryn-style
+author:
+  name: Divio AG
+  url: https://www.divio.ch
+installed-apps:
+  - aldryn_style
+version: 0.0.1
+description: Wraps inner plugin with a classy div.
+license:
+  name: BSD
+  text: !literal-include LICENSE.txt
