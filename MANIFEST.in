@@ -1,5 +1,6 @@
 include LICENSE.txt
 recursive-include aldryn_style/templates *
+recursive-include aldryn_style/static *
 recursive-include aldryn_style/locale *
 recursive-include aldryn_style/migrations *
 recursive-exclude * *.pyc

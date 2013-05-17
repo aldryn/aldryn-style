@@ -5,6 +5,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
 from aldryn_style import models
+from aldryn_style.forms import StyleForm
 
 
 class StylePlugin(CMSPluginBase):
@@ -13,6 +14,7 @@ class StylePlugin(CMSPluginBase):
     name = _('Style')
     model = models.StylePlugin
     allow_children = True
+    form = StyleForm
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
