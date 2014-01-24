@@ -8,29 +8,24 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'StylePlugin'
-        db.create_table('cmsplugin_styleplugin', (
+        # Adding model 'Style'
+        db.create_table('aldryn_style', (
             ('cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
-            ('class_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('class_name', self.gf('django.db.models.fields.CharField')(default='info', max_length=50)),
         ))
-        db.send_create_signal('aldryn_style', ['StylePlugin'])
+        db.send_create_signal('aldryn_style', ['Style'])
 
 
     def backwards(self, orm):
-        # Deleting model 'StylePlugin'
-        db.delete_table('cmsplugin_styleplugin')
+        # Deleting model 'Style'
+        db.delete_table('aldryn_style')
 
 
     models = {
-        'aldryn_style.styleplugin': {
-            'Meta': {'object_name': 'StylePlugin', 'db_table': "'cmsplugin_styleplugin'", '_ormbases': ['cms.CMSPlugin']},
-            'class_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'})
-        },
         'cms.cmsplugin': {
             'Meta': {'object_name': 'CMSPlugin'},
             'changed_date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 12, 6, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'language': ('django.db.models.fields.CharField', [], {'max_length': '15', 'db_index': 'True'}),
             'level': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
@@ -47,6 +42,11 @@ class Migration(SchemaMigration):
             'default_width': ('django.db.models.fields.PositiveSmallIntegerField', [], {'null': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
+        },
+        'aldryn_style.style': {
+            'Meta': {'object_name': 'Style', 'db_table': "'aldryn_style'", '_ormbases': ['cms.CMSPlugin']},
+            'class_name': ('django.db.models.fields.CharField', [], {'default': "'info'", 'max_length': '50'}),
+            'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'})
         }
     }
 

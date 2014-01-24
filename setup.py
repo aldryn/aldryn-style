@@ -4,8 +4,12 @@ from setuptools import setup
 from aldryn_style import __version__
 
 
+INSTALL_REQUIRES = [
+
+]
+
 CLASSIFIERS = [
-    'Development Status :: 2 - Pre-Alpha',
+    'Development Status :: 5 - Production/Stable',
     'Environment :: Web Environment',
     'Framework :: Django',
     'Intended Audience :: Developers',
@@ -14,6 +18,7 @@ CLASSIFIERS = [
     'Programming Language :: Python',
     'Topic :: Communications',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Message Boards',
     'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
 ]
@@ -21,14 +26,16 @@ CLASSIFIERS = [
 setup(
     name='aldryn-style',
     version=__version__,
-    description='Wraps inner plugin with a classy div',
+    description='Style Plugin for django CMS',
     author='Divio AG',
     author_email='info@divio.ch',
-    url='https://github.com/aldryn/aldryn-style',
-    packages=['aldryn_style'],
+    url='https://github.com/divio/aldryn-style',
+    packages=['aldryn_style', 'aldryn_style.migrations'],
+    install_requires=INSTALL_REQUIRES,
     license='LICENSE.txt',
     platforms=['OS Independent'],
     classifiers=CLASSIFIERS,
+    long_description=open('README.md').read(),
     include_package_data=True,
     zip_safe=False
 )

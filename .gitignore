@@ -1,4 +1,10 @@
+*.log
+*.pot
 *.pyc
-dist/*
-build/*
-*.egg-info/*
+.project
+.pydevproject
+.settings
+build
+env*
+dist
+aldryn_style.egg-info
