@@ -10,18 +10,18 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Style.class_name'
-        db.alter_column(u'cmsplugin_style', 'class_name', self.gf('django.db.models.fields.CharField')(max_length=50))
+        db.alter_column(u'aldryn_style', 'class_name', self.gf('django.db.models.fields.CharField')(max_length=50))
 
         # Changing field 'Style.id_name'
-        db.alter_column(u'cmsplugin_style', 'id_name', self.gf('django.db.models.fields.CharField')(max_length=50))
+        db.alter_column(u'aldryn_style', 'id_name', self.gf('django.db.models.fields.CharField')(max_length=50))
 
     def backwards(self, orm):
 
         # Changing field 'Style.class_name'
-        db.alter_column(u'cmsplugin_style', 'class_name', self.gf('django.db.models.fields.CharField')(max_length=50, null=True))
+        db.alter_column(u'aldryn_style', 'class_name', self.gf('django.db.models.fields.CharField')(max_length=50, null=True))
 
         # Changing field 'Style.id_name'
-        db.alter_column(u'cmsplugin_style', 'id_name', self.gf('django.db.models.fields.CharField')(max_length=50, null=True))
+        db.alter_column(u'aldryn_style', 'id_name', self.gf('django.db.models.fields.CharField')(max_length=50, null=True))
 
     models = {
         u'aldryn_style.style': {

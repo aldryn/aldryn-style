@@ -9,14 +9,14 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding field 'Style.id_name'
-        db.add_column(u'cmsplugin_style', 'id_name',
+        db.add_column(u'aldryn_style', 'id_name',
                       self.gf('django.db.models.fields.CharField')(max_length=50, null=True, blank=True),
                       keep_default=False)
 
 
     def backwards(self, orm):
         # Deleting field 'Style.id_name'
-        db.delete_column(u'cmsplugin_style', 'id_name')
+        db.delete_column(u'aldryn_style', 'id_name')
 
 
     models = {

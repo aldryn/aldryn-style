@@ -8,10 +8,10 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        db.rename_column(u'cmsplugin_style', 'additional_classes', 'additional_class_names')
+        db.rename_column(u'aldryn_style', 'additional_classes', 'additional_class_names')
 
     def backwards(self, orm):
-        db.rename_column(u'cmsplugin_style', 'additional_class_names', 'additional_classes')
+        db.rename_column(u'aldryn_style', 'additional_class_names', 'additional_classes')
 
     models = {
         u'aldryn_style.style': {
