@@ -20,7 +20,7 @@ Usage
 You can define styles in your settings.py:
 
 ```
-CMS_STYLE_NAMES = (
+ALDRYN_STYLE_CLASS_NAMES = (
     ('info', _("info")),
     ('new', _("new")),
     ('hint', _("hint")),

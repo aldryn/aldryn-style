@@ -20,5 +20,5 @@ class Form(forms.BaseForm):
     class_names = ClassNamesField('Class names', max_length=100)
 
     def to_settings(self, data, settings):
-        settings['STYLE_CLASS_NAMES'] = data['class_names']
+        settings['ALDRYN_STYLE_CLASS_NAMES'] = data['class_names']
         return settings
