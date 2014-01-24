@@ -1,7 +1,7 @@
 {
 	"name": "Style",
 	"description": "Creates an element with provided attributes.",
-	"version": "0.0.6",
+	"version": "0.1.2",
 	"url": "https://github.com/aldryn/aldryn-style",
 	"package-name": "aldryn-style",
 	"installed-apps": [
