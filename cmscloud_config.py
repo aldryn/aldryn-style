@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from cmscloud_client import forms
+import re
 
-from aldryn_style.utils import CLASS_NAME_FORMAT
+CLASS_NAME_FORMAT = re.compile(r'^\w[\w_-]*$')
 
 
 class ClassNamesField(forms.CharField):

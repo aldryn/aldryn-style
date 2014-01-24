@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+import re
 from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 CLASS_NAMES = getattr(
     settings,
@@ -12,6 +15,10 @@ CLASS_NAMES = getattr(
         ('teaser', _("teaser")),
     )
 )
+
+
+CLASS_NAME_FORMAT = re.compile(r'^\w[\w_-]*$')
+
 
 class Style(CMSPlugin):
     """
@@ -77,6 +84,16 @@ class Style(CMSPlugin):
         if self.margin_bottom:
             style += "margin-bottom: %dpx; " % self.margin_bottom
         return style
+
+    def clean(self):
+        if self.additional_class_names:
+            additional_class_names = list(html_class.strip() for html_class in self.additional_class_names.split(','))
+            for class_name in additional_class_names:
+                class_name = class_name.strip()
+                if not CLASS_NAME_FORMAT.match(class_name):
+                    raise ValidationError(u'"%s" is not a proper css class name.' % (class_name, ))
+            self.additional_class_names = u", ".join(set(additional_class_names))
+
 
     @property
     def get_additional_class_names(self):
