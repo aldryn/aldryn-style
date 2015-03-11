@@ -62,6 +62,8 @@ class Style(CMSPlugin):
 
     def __unicode__(self):
         display = self.get_class_name_display() or self.tag_type or u''
+        if self.additional_class_names:
+            display = u'{} ({})'.format(display, self.additional_class_names)
         return u"%s" % display
 
     def inline_style(self):
