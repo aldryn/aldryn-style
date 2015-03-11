@@ -54,9 +54,8 @@ class Style(CMSPlugin):
     margin_top = models.SmallIntegerField(_("margin top"), blank=True, null=True)
     margin_bottom = models.SmallIntegerField(_("margin bottom"), blank=True, null=True)
 
-    additional_class_names = models.CharField(
+    additional_class_names = models.TextField(
         verbose_name=_('additional classes'),
-        max_length=200,
         blank=True,
         help_text=_('Comma separated list of additional classes to apply to tag_type')
     )
