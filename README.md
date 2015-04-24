@@ -30,6 +30,14 @@ ALDRYN_STYLE_CLASS_NAMES = (
 After that you can place other plugins inside this style plugin.
 It will create a div with a class that was prior selected around this plugin.
 
+Wiki
+------------
+
+If you need further details about the implementation or usage
+
+https://github.com/aldryn/aldryn-style/wiki
+
+
 Translations
 ------------
 
