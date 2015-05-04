@@ -1,17 +1,6 @@
 {
-	"name": "Aldryn Style",
-	"description": "Creates an element with provided attributes.",
-	"url": "https://github.com/aldryn/aldryn-style",
 	"package-name": "aldryn-style",
 	"installed-apps": [
 		"aldryn_style"
-	],
-	"author": {
-		"name": "Divio AG",
-		"url": "https://www.divio.ch"
-	},
-	"license": {
-		"name": "BSD",
-		"text": "!literal-include LICENSE.txt"
-	}
+	]
 }
