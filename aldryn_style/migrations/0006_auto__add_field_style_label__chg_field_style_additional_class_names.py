@@ -8,32 +8,31 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        db.delete_column(
-            u'aldryn_style_style',
-            'additional_class_names',
-        )
-        db.rename_column(
-            u'aldryn_style_style',
-            'txt_additional_class_names',
-            'additional_class_names',
-        )
+        # Adding field 'Style.label'
+        db.add_column(u'aldryn_style_style', 'label',
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=128, blank=True),
+                      keep_default=False)
+
+
+        # Changing field 'Style.additional_class_names'
+        db.alter_column(u'aldryn_style_style', 'additional_class_names', self.gf('django.db.models.fields.TextField')())
 
     def backwards(self, orm):
-        db.rename_column(u'aldryn_style_style', 'additional_class_names', 'txt_additional_class_names')
-        db.add_column(
-            u'aldryn_style_style',
-            'additional_class_names',
-            self.gf('django.db.models.fields.CharField')(default='', blank=True, max_length=200),
-            keep_default=False,
-        )
+        # Deleting field 'Style.label'
+        db.delete_column(u'aldryn_style_style', 'label')
+
+
+        # Changing field 'Style.additional_class_names'
+        db.alter_column(u'aldryn_style_style', 'additional_class_names', self.gf('django.db.models.fields.CharField')(max_length=200))
 
     models = {
         u'aldryn_style.style': {
             'Meta': {'object_name': 'Style', '_ormbases': ['cms.CMSPlugin']},
-            'additional_class_names': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'additional_class_names': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'class_name': ('django.db.models.fields.CharField', [], {'default': "'container'", 'max_length': '50', 'blank': 'True'}),
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'related_name': "'+'", 'unique': 'True', 'primary_key': 'True', 'to': "orm['cms.CMSPlugin']"}),
             'id_name': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '50', 'blank': 'True'}),
+            'label': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '128', 'blank': 'True'}),
             'margin_bottom': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
             'margin_left': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
             'margin_right': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),

@@ -13,7 +13,7 @@ class StylePlugin(CMSPluginBase):
 
     fieldsets = (
         (None, {
-            'fields': ('class_name',)
+            'fields': ('label', 'class_name', )
         }),
         (_('Advanced Settings'), {
             'classes': ('collapse',),

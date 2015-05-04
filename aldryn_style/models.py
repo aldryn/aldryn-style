@@ -37,12 +37,17 @@ class Style(CMSPlugin):
         (INLINE_TAG, _('inline')),
     )
 
+    label = models.CharField(_('label'), max_length=128, default="", blank=True,
+        help_text=_('Optional label for this style plugin.'))
+
     cmsplugin_ptr = models.OneToOneField(CMSPlugin, related_name='+', parent_link=True)
 
-    class_name = models.CharField(_("class name"), choices=CLASS_NAMES, default=CLASS_NAMES[0][0], max_length=50, blank=True)
+    class_name = models.CharField(_("class name"), choices=CLASS_NAMES,
+        default=CLASS_NAMES[0][0], max_length=50, blank=True)
     id_name = models.CharField(_("id name"), max_length=50, blank=True, default='')
 
-    tag_type = models.CharField(verbose_name=_('tag Type'), max_length=50, choices=HTML_TAG_TYPES, default=DIV_TAG)
+    tag_type = models.CharField(verbose_name=_('tag Type'), max_length=50,
+        choices=HTML_TAG_TYPES, default=DIV_TAG)
 
     padding_left = models.SmallIntegerField(_("padding left"), blank=True, null=True)
     padding_right = models.SmallIntegerField(_("padding right"), blank=True, null=True)
@@ -63,7 +68,9 @@ class Style(CMSPlugin):
     def __unicode__(self):
         display = self.get_class_name_display() or self.tag_type or u''
         if self.additional_class_names:
-            display = u'{} ({})'.format(display, self.additional_class_names)
+            display = u'{0} ({1})'.format(display, self.additional_class_names)
+        if self.label:
+            display = u'“{0}”: {1}'.format(self.label, display)
         return u"%s" % display
 
     def inline_style(self):
@@ -88,13 +95,13 @@ class Style(CMSPlugin):
 
     def clean(self):
         if self.additional_class_names:
-            additional_class_names = list(html_class.strip() for html_class in self.additional_class_names.split(','))
+            additional_class_names = list(
+                html_class.strip() for html_class in self.additional_class_names.split(','))
             for class_name in additional_class_names:
                 class_name = class_name.strip()
                 if not CLASS_NAME_FORMAT.match(class_name):
                     raise ValidationError(u'"%s" is not a proper css class name.' % (class_name, ))
             self.additional_class_names = u", ".join(set(additional_class_names))
-
 
     @property
     def get_additional_class_names(self):
@@ -102,4 +109,3 @@ class Style(CMSPlugin):
             # Removes any extra spaces
             return ' '.join((html_class.strip() for html_class in self.additional_class_names.split(',')))
         return ''
-
