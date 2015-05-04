@@ -42,8 +42,7 @@ class Migration(SchemaMigration):
             'padding_left': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
             'padding_right': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
             'padding_top': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'tag_type': ('django.db.models.fields.CharField', [], {'default': "'div'", 'max_length': '50'}),
-            'txt_additional_class_names': ('django.db.models.fields.TextField', [], {'blank': 'True'})
+            'tag_type': ('django.db.models.fields.CharField', [], {'default': "'div'", 'max_length': '50'})
         },
         'cms.cmsplugin': {
             'Meta': {'object_name': 'CMSPlugin'},
