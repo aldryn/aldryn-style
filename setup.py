@@ -1,12 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from setuptools import setup
+from setuptools import setup, find_packages
 from aldryn_style import __version__
 
-
-INSTALL_REQUIRES = [
-
-]
+REQUIREMENTS = []
 
 CLASSIFIERS = [
     'Development Status :: 5 - Production/Stable',
@@ -16,11 +12,9 @@ CLASSIFIERS = [
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
-    'Topic :: Communications',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Message Boards',
-    'Programming Language :: Python :: 2.6',
-    'Programming Language :: Python :: 2.7',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Libraries :: Application Frameworks',
 ]
 
 setup(
@@ -30,12 +24,11 @@ setup(
     author='Divio AG',
     author_email='info@divio.ch',
     url='https://github.com/divio/aldryn-style',
-    packages=['aldryn_style', 'aldryn_style.migrations'],
-    install_requires=INSTALL_REQUIRES,
+    packages=find_packages(),
     license='LICENSE.txt',
     platforms=['OS Independent'],
+    install_requires=REQUIREMENTS,
     classifiers=CLASSIFIERS,
-    long_description=open('README.md').read(),
     include_package_data=True,
-    zip_safe=False
+    zip_safe=False,
 )
