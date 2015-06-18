@@ -10,7 +10,7 @@ Installation
 
 This plugin requires `django CMS` 2.4 or higher to be properly installed.
 
-* Within your *virtualenv* ``pip install aldryn-style``
+* Within your ``virtualenv`` run ``pip install aldryn-style``
 * Add ``'aldryn_style'`` to your ``INSTALLED_APPS`` setting.
 * Run ``manage.py migrate aldryn_style``.
 
@@ -21,11 +21,11 @@ Usage
 You can define styles in your settings.py:
 
 ```
-gettext = lambda s: s
+_ = lambda s: s
 ALDRYN_STYLE_CLASS_NAMES = (
-    ('info', gettext('info')),
-    ('new', gettext('new')),
-    ('hint', gettext('hint')),
+    ('info', _('info')),
+    ('new', _('new')),
+    ('hint', _('hint')),
 )
 ```
 
