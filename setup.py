@@ -15,9 +15,7 @@ CLASSIFIERS = [
     'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Message Boards',
     'Topic :: Software Development',
-    'Topic :: Software Development :: Libraries :: Application Frameworks',
 ]
 
 setup(
