@@ -10,7 +10,7 @@ Installation
 
 This plugin requires `django CMS` 2.4 or higher to be properly installed.
 
-* Create a `virtualenv` and run ``pip install aldryn-style``
+* Within your *virtualenv* ``pip install aldryn-style``
 * Add ``'aldryn_style'`` to your ``INSTALLED_APPS`` setting.
 * Run ``manage.py migrate aldryn_style``.
 
