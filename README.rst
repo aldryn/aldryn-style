@@ -2,7 +2,8 @@
 Aldryn Style
 ============
 
-A Plugin for django CMS to add CSS classes to other plugins.
+Aldryn Style provides a plugin that wraps other plugins in CSS styling, by placing a class name on a containing 
+element.
 
 ------------
 Installation
