@@ -8,3 +8,4 @@ build
 env*
 dist
 aldryn_style.egg-info
+.idea
