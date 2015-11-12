@@ -28,13 +28,23 @@ class Style(CMSPlugin):
     DIV_TAG = 'div'
     ARTICLE_TAG = 'article'
     SECTION_TAG = 'section'
-    INLINE_TAG = 'span'
+    SPAN_TAG = 'span'
+    P_TAG = 'p'
+    H1_TAG = 'h1'
+    H2_TAG = 'h2'
+    H3_TAG = 'h3'
+    H4_TAG = 'h4'
 
     HTML_TAG_TYPES = (
         (DIV_TAG, _('div')),
         (ARTICLE_TAG, _('article')),
         (SECTION_TAG, _('section')),
-        (INLINE_TAG, _('inline')),
+        (SPAN_TAG, _('span')),
+        (P_TAG, _('paragraph')),
+        (H1_TAG, _('heading 1')),
+        (H2_TAG, _('heading 2')),
+        (H3_TAG, _('heading 3')),
+        (H4_TAG, _('heading 4')),
     )
 
     label = models.CharField(_('label'), max_length=128, default="", blank=True,
