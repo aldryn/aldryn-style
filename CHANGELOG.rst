@@ -1,7 +1,7 @@
 Changelog
 =========
 
-x.x.x (xxxx-xx-xx)
+1.0.1 (2015-11-12)
 ------------------
 
 * Add more tag types to select from
@@ -11,6 +11,7 @@ x.x.x (xxxx-xx-xx)
 ------------------
 
 * Stable release
+
 
 0.3.0 (2015-10-15)
 ------------------
