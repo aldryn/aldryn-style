@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
 from cms.models import CMSPlugin
+
+import warnings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -27,6 +29,9 @@ def get_html_tag_types():
         for tag in tag_types:
             tag = tag.strip()
             if not TAG_TYPE_FORMAT.match(tag):
+                warnings.warn(_(u'ALDRYN STYLE: "{}" was omitted from '
+                                u'ALDRYN_STYLE_ALLOWED_TAGS as it does '
+                                u'not look like a valid HTML tag.').format(tag))
                 tag_types.remove(tag)
 
     # Could be that it was initially empty, or, none of the supplied entries
