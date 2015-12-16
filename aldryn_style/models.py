@@ -16,36 +16,36 @@ CLASS_NAMES = getattr(
     )
 )
 
-
 CLASS_NAME_FORMAT = re.compile(r'^\w[\w_-]*$')
+TAG_TYPE_FORMAT = re.compile(r'\w[\w\d]*$')
+
+
+def get_html_tag_types():
+    tag_types = getattr(settings, "ALDRYN_STYLE_ALLOWED_TAGS", None)
+    if tag_types:
+        # Remove anything that doesn't look like an HTML tag
+        for tag in tag_types:
+            tag = tag.strip()
+            if not TAG_TYPE_FORMAT.match(tag):
+                tag_types.remove(tag)
+
+    # Could be that it was initially empty, or, none of the supplied entries
+    # looked right, in either of these cases, use the default set as defined
+    # in version 1.0.1.
+    if tag_types is None:
+        tag_types = [
+            'div', 'article', 'section', 'span', 'p', 'h1', 'h2', 'h3', 'h4',
+        ]
+
+    return tuple([(tag, tag) for tag in tag_types])
 
 
 class Style(CMSPlugin):
     """
     A CSS Style Plugin
     """
-
     DIV_TAG = 'div'
-    ARTICLE_TAG = 'article'
-    SECTION_TAG = 'section'
-    SPAN_TAG = 'span'
-    P_TAG = 'p'
-    H1_TAG = 'h1'
-    H2_TAG = 'h2'
-    H3_TAG = 'h3'
-    H4_TAG = 'h4'
-
-    HTML_TAG_TYPES = (
-        (DIV_TAG, _('div')),
-        (ARTICLE_TAG, _('article')),
-        (SECTION_TAG, _('section')),
-        (SPAN_TAG, _('span')),
-        (P_TAG, _('paragraph')),
-        (H1_TAG, _('heading 1')),
-        (H2_TAG, _('heading 2')),
-        (H3_TAG, _('heading 3')),
-        (H4_TAG, _('heading 4')),
-    )
+    HTML_TAG_TYPES = get_html_tag_types()
 
     label = models.CharField(_('label'), max_length=128, default="", blank=True,
         help_text=_('Optional label for this style plugin.'))

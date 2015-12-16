@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.2 (2015-12-16)
+------------------
+
+* Provide a means of defining allowed tags
+
 1.0.1 (2015-11-12)
 ------------------
 
