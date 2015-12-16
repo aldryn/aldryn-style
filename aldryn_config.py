@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+
 import re
+
 from aldryn_client import forms
 
 
@@ -14,8 +16,10 @@ class ClassNamesField(forms.CharField):
         class_names = filter(bool, map(lambda x: x.strip(), value.split(',')))
         for class_name in class_names:
             if not CLASS_NAME_FORMAT.match(class_name):
-                raise forms.ValidationError(u'%s is not a proper class name.' % (class_name, ))
-        return u", ".join(class_names)
+                raise forms.ValidationError(
+                    u'{} is not a proper class name.'.format(class_name)
+                )
+        return u', '.join(class_names)
 
 
 class TagTypesField(forms.CharField):
@@ -26,8 +30,9 @@ class TagTypesField(forms.CharField):
         for tag_type in tag_types:
             if not TAG_TYPE_FORMAT.match(tag_type):
                 raise forms.ValidationError(
-                    u'%s does not look like a proper HTML tag.' % (tag_type, ))
-        return u", ".join(tag_type)
+                    u'{} does not look like a proper HTML tag.'.format(tag_type)
+                )
+        return u', '.join(tag_type)
 
 
 class Form(forms.BaseForm):
@@ -38,7 +43,8 @@ class Form(forms.BaseForm):
     def to_settings(self, data, settings):
         settings['ALDRYN_STYLE_CLASS_NAMES'] = [
             (class_name, class_name) for class_name in set(
-                filter(bool, map(lambda x: x.strip(), data['class_names'].split(','))))]
+                filter(bool, map(
+                    lambda x: x.strip(), data['class_names'].split(','))))]
         settings['ALDRYN_STYLE_ALLOWED_TAGS'] = [
             (tag_type, tag_type) for tag_type in set(
                 filter(bool, map(
