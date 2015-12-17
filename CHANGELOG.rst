@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 * Provide a means of defining allowed tags
+* Implement the padding/margin settings
 
 1.0.1 (2015-11-12)
 ------------------

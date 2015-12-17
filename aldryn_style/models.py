@@ -107,26 +107,6 @@ class Style(CMSPlugin):
             display = '“{0}”: {1}'.format(self.label, display)
         return display
 
-    def inline_style(self):
-        style = ''
-        if self.padding_left:
-            style += 'padding-left: {0:d}px; '.format(self.padding_left)
-        if self.padding_right:
-            style += 'padding-right: {0:d}px; '.format(self.padding_right)
-        if self.padding_bottom:
-            style += 'padding-bottom: {0:d}px; '.format(self.padding_right)
-        if self.padding_top:
-            style += 'padding-top: {0:d}px; '.format(self.padding_top)
-        if self.margin_left:
-            style += 'margin-left: {0:d}px; '.format(self.margin_left)
-        if self.margin_right:
-            style += 'margin-right: {0:d}px; '.format(self.margin_right)
-        if self.margin_top:
-            style += 'margin-top: {0:d}px; '.format(self.margin_top)
-        if self.margin_bottom:
-            style += 'margin-bottom: {0:d}px; '.format(self.margin_bottom)
-        return style
-
     def clean(self):
         if self.additional_class_names:
             additional_class_names = list(
@@ -150,3 +130,24 @@ class Style(CMSPlugin):
                 html_class.strip() for html_class in
                 self.additional_class_names.split(',')))
         return ''
+
+    @property
+    def inline_style(self):
+        styles = []
+        if self.padding_left:
+            styles.append('padding-left: {0:d}px;'.format(self.padding_left))
+        if self.padding_right:
+            styles.append('padding-right: {0:d}px;'.format(self.padding_right))
+        if self.padding_bottom:
+            styles.append('padding-bottom: {0:d}px;'.format(self.padding_bottom))
+        if self.padding_top:
+            styles.append('padding-top: {0:d}px;'.format(self.padding_top))
+        if self.margin_left:
+            styles.append('margin-left: {0:d}px;'.format(self.margin_left))
+        if self.margin_right:
+            styles.append('margin-right: {0:d}px;'.format(self.margin_right))
+        if self.margin_top:
+            styles.append('margin-top: {0:d}px;'.format(self.margin_top))
+        if self.margin_bottom:
+            styles.append('margin-bottom: {0:d}px;'.format(self.margin_bottom))
+        return ' '.join(styles)
