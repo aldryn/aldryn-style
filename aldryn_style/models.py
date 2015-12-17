@@ -33,7 +33,7 @@ def get_html_tag_types():
         for tag in tag_types:
             tag = tag.strip()
             if not TAG_TYPE_FORMAT.match(tag):
-                warnings.warn(_(u'ALDRYN STYLE: "{}" was omitted from '
+                warnings.warn(_(u'ALDRYN STYLE: "{0}" was omitted from '
                                 u'ALDRYN_STYLE_ALLOWED_TAGS as it does '
                                 u'not look like a valid HTML tag.').format(tag))
                 tag_types.remove(tag)
@@ -106,21 +106,21 @@ class Style(CMSPlugin):
     def inline_style(self):
         style = ''
         if self.padding_left:
-            style += 'padding-left: %dpx; '.format(self.padding_left)
+            style += 'padding-left: {0:d}px; '.format(self.padding_left)
         if self.padding_right:
-            style += 'padding-right: %dpx; '.format(self.padding_right)
+            style += 'padding-right: {0:d}px; '.format(self.padding_right)
         if self.padding_bottom:
-            style += 'padding-bottom: %dpx; '.format(self.padding_right)
+            style += 'padding-bottom: {0:d}px; '.format(self.padding_right)
         if self.padding_top:
-            style += 'padding-top: %dpx; '.format(self.padding_top)
+            style += 'padding-top: {0:d}px; '.format(self.padding_top)
         if self.margin_left:
-            style += 'margin-left: %dpx; '.format(self.margin_left)
+            style += 'margin-left: {0:d}px; '.format(self.margin_left)
         if self.margin_right:
-            style += 'margin-right: %dpx; '.format(self.margin_right)
+            style += 'margin-right: {0:d}px; '.format(self.margin_right)
         if self.margin_top:
-            style += 'margin-top: %dpx; '.format(self.margin_top)
+            style += 'margin-top: {0:d}px; '.format(self.margin_top)
         if self.margin_bottom:
-            style += 'margin-bottom: %dpx; '.format(self.margin_bottom)
+            style += 'margin-bottom: {0:d}px; '.format(self.margin_bottom)
         return style
 
     def clean(self):
@@ -132,7 +132,7 @@ class Style(CMSPlugin):
                 class_name = class_name.strip()
                 if not CLASS_NAME_FORMAT.match(class_name):
                     raise ValidationError(
-                        _(u'"{}" is not a proper css class name.').format(
+                        _(u'"{0}" is not a proper css class name.').format(
                             class_name)
                     )
             self.additional_class_names = u', '.join(

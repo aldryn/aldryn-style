@@ -17,7 +17,7 @@ class ClassNamesField(forms.CharField):
         for class_name in class_names:
             if not CLASS_NAME_FORMAT.match(class_name):
                 raise forms.ValidationError(
-                    u'{} is not a proper class name.'.format(class_name)
+                    u'{0} is not a proper class name.'.format(class_name)
                 )
         return u', '.join(class_names)
 
@@ -30,7 +30,7 @@ class TagTypesField(forms.CharField):
         for tag_type in tag_types:
             if not TAG_TYPE_FORMAT.match(tag_type):
                 raise forms.ValidationError(
-                    u'{} does not look like a proper HTML tag.'.format(tag_type)
+                    u'{0} does not look like a proper HTML tag.'.format(tag_type)
                 )
         return u', '.join(tag_type)
 
