@@ -2,8 +2,8 @@
 Aldryn Style
 ============
 
-Aldryn Style provides a plugin that wraps other plugins in CSS styling, by placing a class name on a containing 
-element.
+Aldryn Style provides a plugin that wraps other plugins in CSS styling, by
+placing a class name on a containing element.
 
 ------------
 Installation
