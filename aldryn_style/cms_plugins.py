@@ -21,8 +21,9 @@ class StylePlugin(CMSPluginBase):
                 'tag_type',
                 'additional_class_names',
                 'id_name',
-                ('padding_left', 'padding_right', 'padding_top', 'padding_bottom'),
-                ('margin_left', 'margin_right', 'margin_top', 'margin_bottom'),
+                ('padding_top', 'padding_right', 'padding_bottom',
+                 'padding_left'),
+                ('margin_top', 'margin_right', 'margin_bottom', 'margin_left'),
             ),
         }),
     )
