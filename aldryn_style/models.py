@@ -74,23 +74,23 @@ class Style(CMSPlugin):
         verbose_name=_('tag Type'), max_length=50, choices=HTML_TAG_TYPES,
         default=DIV_TAG)
 
-    padding_left = models.SmallIntegerField(
-        _('padding left'), blank=True, null=True)
-    padding_right = models.SmallIntegerField(
-        _('padding right'), blank=True, null=True)
     padding_top = models.SmallIntegerField(
         _('padding top'), blank=True, null=True)
+    padding_right = models.SmallIntegerField(
+        _('padding right'), blank=True, null=True)
     padding_bottom = models.SmallIntegerField(
         _('padding bottom'), blank=True, null=True)
+    padding_left = models.SmallIntegerField(
+        _('padding left'), blank=True, null=True)
 
-    margin_left = models.SmallIntegerField(
-        _('margin left'), blank=True, null=True)
-    margin_right = models.SmallIntegerField(
-        _('margin right'), blank=True, null=True)
     margin_top = models.SmallIntegerField(
         _('margin top'), blank=True, null=True)
+    margin_right = models.SmallIntegerField(
+        _('margin right'), blank=True, null=True)
     margin_bottom = models.SmallIntegerField(
         _('margin bottom'), blank=True, null=True)
+    margin_left = models.SmallIntegerField(
+        _('margin left'), blank=True, null=True)
 
     additional_class_names = models.TextField(
         verbose_name=_('additional classes'),
@@ -134,20 +134,20 @@ class Style(CMSPlugin):
     @property
     def inline_style(self):
         styles = []
-        if self.padding_left:
-            styles.append('padding-left: {0:d}px;'.format(self.padding_left))
+        if self.padding_top:
+            styles.append('padding-top: {0:d}px;'.format(self.padding_top))
         if self.padding_right:
             styles.append('padding-right: {0:d}px;'.format(self.padding_right))
         if self.padding_bottom:
             styles.append('padding-bottom: {0:d}px;'.format(self.padding_bottom))
-        if self.padding_top:
-            styles.append('padding-top: {0:d}px;'.format(self.padding_top))
-        if self.margin_left:
-            styles.append('margin-left: {0:d}px;'.format(self.margin_left))
-        if self.margin_right:
-            styles.append('margin-right: {0:d}px;'.format(self.margin_right))
+        if self.padding_left:
+            styles.append('padding-left: {0:d}px;'.format(self.padding_left))
         if self.margin_top:
             styles.append('margin-top: {0:d}px;'.format(self.margin_top))
+        if self.margin_right:
+            styles.append('margin-right: {0:d}px;'.format(self.margin_right))
         if self.margin_bottom:
             styles.append('margin-bottom: {0:d}px;'.format(self.margin_bottom))
+        if self.margin_left:
+            styles.append('margin-left: {0:d}px;'.format(self.margin_left))
         return ' '.join(styles)
