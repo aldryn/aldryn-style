@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 import re
 
 from aldryn_client import forms
@@ -17,9 +19,9 @@ class ClassNamesField(forms.CharField):
         for class_name in class_names:
             if not CLASS_NAME_FORMAT.match(class_name):
                 raise forms.ValidationError(
-                    u'{0} is not a proper class name.'.format(class_name)
+                    '{0} is not a proper class name.'.format(class_name)
                 )
-        return u', '.join(class_names)
+        return ', '.join(class_names)
 
 
 class TagTypesField(forms.CharField):
@@ -30,9 +32,9 @@ class TagTypesField(forms.CharField):
         for tag_type in tag_types:
             if not TAG_TYPE_FORMAT.match(tag_type):
                 raise forms.ValidationError(
-                    u'{0} does not look like a proper HTML tag.'.format(tag_type)
+                    '{0} does not look like a proper HTML tag.'.format(tag_type)
                 )
-        return u', '.join(tag_type)
+        return ', '.join(tag_type)
 
 
 class Form(forms.BaseForm):

@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 import re
 
 import warnings
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
@@ -33,9 +36,9 @@ def get_html_tag_types():
         for tag in tag_types:
             tag = tag.strip()
             if not TAG_TYPE_FORMAT.match(tag):
-                warnings.warn(_(u'ALDRYN STYLE: "{0}" was omitted from '
-                                u'ALDRYN_STYLE_ALLOWED_TAGS as it does '
-                                u'not look like a valid HTML tag.').format(tag))
+                warnings.warn(_('ALDRYN STYLE: "{0}" was omitted from '
+                                'ALDRYN_STYLE_ALLOWED_TAGS as it does '
+                                'not look like a valid HTML tag.').format(tag))
                 tag_types.remove(tag)
 
     # Could be that it was initially empty, or, none of the supplied entries
@@ -49,6 +52,7 @@ def get_html_tag_types():
     return tuple([(tag, tag) for tag in tag_types])
 
 
+@python_2_unicode_compatible
 class Style(CMSPlugin):
     """
     A CSS Style Plugin
@@ -91,17 +95,17 @@ class Style(CMSPlugin):
     additional_class_names = models.TextField(
         verbose_name=_('additional classes'),
         blank=True,
-        help_text=_(u'Comma separated list of additional classes to apply to '
-                    u'tag_type')
+        help_text=_('Comma separated list of additional classes to apply to '
+                    'tag_type')
     )
 
-    def __unicode__(self):
-        display = self.get_class_name_display() or self.tag_type or u''
+    def __str__(self):
+        display = self.tag_type or ''
         if self.additional_class_names:
-            display = u'{0} ({1})'.format(display, self.additional_class_names)
+            display = '{0} ({1})'.format(display, self.additional_class_names)
         if self.label:
-            display = u'“{0}”: {1}'.format(self.label, display)
-        return u'%s' % display
+            display = '“{0}”: {1}'.format(self.label, display)
+        return display
 
     def inline_style(self):
         style = ''
@@ -132,10 +136,10 @@ class Style(CMSPlugin):
                 class_name = class_name.strip()
                 if not CLASS_NAME_FORMAT.match(class_name):
                     raise ValidationError(
-                        _(u'"{0}" is not a proper css class name.').format(
+                        _('"{0}" is not a proper css class name.').format(
                             class_name)
                     )
-            self.additional_class_names = u', '.join(
+            self.additional_class_names = ', '.join(
                 set(additional_class_names))
 
     @property
