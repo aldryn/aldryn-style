@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.1.0 (2015-12-16)
+------------------
+
+* Provide a means of defining allowed tags
+* Implement the padding/margin settings
+* Python 3 compatibility
+
 1.0.1 (2015-11-12)
 ------------------
 
