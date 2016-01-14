@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.1 (2016-01-14)
+------------------
+
+* Minor fix to new ALDRYN_STYLE_ALLOWED_TAGS setting
+
 1.1.0 (2015-12-16)
 ------------------
 
