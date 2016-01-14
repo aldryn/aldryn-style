@@ -44,7 +44,7 @@ def get_html_tag_types():
     # Could be that it was initially empty, or, none of the supplied entries
     # looked right, in either of these cases, use the default set as defined
     # in version 1.0.1.
-    if tag_types is None:
+    if not tag_types:
         tag_types = [
             'div', 'article', 'section', 'span', 'p', 'h1', 'h2', 'h3', 'h4',
         ]
