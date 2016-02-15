@@ -39,7 +39,9 @@ empty list, then it will default to the following list for backwards
 compatibility with previous versions::
 
     ALDRYN_STYLE_ALLOWED_TAGS = [
-        'div', 'article', 'section', 'span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        'div', 'article', 'section', 'p', 'span',
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        'header', 'footer',
     ]
 
 NOTICE::
