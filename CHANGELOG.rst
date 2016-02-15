@@ -4,6 +4,7 @@ Changelog
 1.1.1 (UNRELEASED)
 ------------------
 * Add missing h-tags to ``tag_types``
+* Add missing header and footer to ``tag_types``
 
 1.1.0 (2015-12-16)
 ------------------

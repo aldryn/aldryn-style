@@ -48,6 +48,7 @@ def get_html_tag_types():
         tag_types = [
             'div', 'article', 'section', 'p', 'span',
             'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+            'header', 'footer',
         ]
 
     return tuple([(tag, tag) for tag in tag_types])
