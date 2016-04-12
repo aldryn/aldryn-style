@@ -1,7 +1,11 @@
 Changelog
 =========
 
-1.1.1 (UNRELEASED)
+1.1.2 (2015-04-12)
+------------------
+* Fix aldryn config issue
+
+1.1.1 (2015-02-15)
 ------------------
 * Add missing h-tags to ``tag_types``
 * Add missing header and footer to ``tag_types``
