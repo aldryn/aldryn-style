@@ -1,9 +1,10 @@
 Changelog
 =========
 
-1.1.3 (2015-04-12)
+1.1.4 (2015-04-12)
 ------------------
 * Fix aldryn config issue
+* Support both lists and tuples of tuples for tag-configuration
 
 1.1.1 (2015-02-15)
 ------------------
