@@ -11,6 +11,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from django.utils.six import string_types
 
 from cms.models import CMSPlugin
 
@@ -31,15 +32,27 @@ TAG_TYPE_FORMAT = re.compile(r'\w[\w\d]*$')
 
 def get_html_tag_types():
     tag_types = getattr(settings, 'ALDRYN_STYLE_ALLOWED_TAGS', None)
+    # If this is a backwards-compatible list of String tag names, then we
+    # should check them for sanity, otherwise, we'll assume Aldryn has
+    # already done this.
     if tag_types:
         # Remove anything that doesn't look like an HTML tag
-        for tag in tag_types:
-            tag = tag.strip()
+        for tag_item in tag_types:
+            if isinstance(tag_item, string_types):
+                tag = tag_item.strip()
+            else:
+                # This is probably a list of tuples a la:
+                #     ( ..., ('option', 'option', ), ...)
+                try:
+                    tag = tag_item[0]
+                except TypeError:
+                    # OK, not sure what this is...
+                    continue
             if not TAG_TYPE_FORMAT.match(tag):
                 warnings.warn(_('ALDRYN STYLE: "{0}" was omitted from '
                                 'ALDRYN_STYLE_ALLOWED_TAGS as it does '
                                 'not look like a valid HTML tag.').format(tag))
-                tag_types.remove(tag)
+                tag_types.remove(tag_item)
 
     # Could be that it was initially empty, or, none of the supplied entries
     # looked right, in either of these cases, use the default set as defined
