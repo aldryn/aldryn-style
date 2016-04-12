@@ -34,7 +34,7 @@ class TagTypesField(forms.CharField):
                 raise forms.ValidationError(
                     '{0} does not look like a proper HTML tag.'.format(tag_type)
                 )
-        return ', '.join(tag_type)
+        return ', '.join(tag_types)
 
 
 class Form(forms.BaseForm):
